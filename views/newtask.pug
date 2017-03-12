@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .container
+    form(method='POST' action='/tasks')
+      .form-group
+        label(for='name') Task:
+        input#name.form-control(type='text', placeholder='Task title here ...',name='name')
+
+      .form-group
+        label(for='priority', title='1:not important, 10:very important') Priority: <i class="fa fa-info-circle"></i>
+        select#priority.form-control(name="priority")
+          -for(var i = 1;i<=10;i++){
+          option(value=i) Priority level #{i}
+          -}
+
+
+      .form-group
+        label(for='description') Description:
+        textarea#description.form-control(name:'description', rows:20, placeholder='Describe what you have to do' )
+
+      .form-group
+        button.btn.btn-primary.btn-space(type='submit') <i class="fa fa-save"></i> Save
+        button.btn.btn-danger.btn-space(type='reset') <i class="fa fa-undo"></i> Reset

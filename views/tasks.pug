@@ -1,0 +1,17 @@
+extends layout
+
+
+block content
+  mixin showTask(task)
+    li.list-group-item 
+      span.badge #{task.priority} 
+      span #{task.name}
+      
+      
+
+  p Number of Tasks: #{tasks.length} 
+  ul.list-group
+  for task in tasks
+    +showTask(task)
+  else
+    li Congratulation, you have nothing to do!
